@@ -17,7 +17,7 @@ export interface IUser extends mongoose.Document {
   rollNumber: string;
   password: string;
   profilePicture?: string;
-  role: 'user' | 'admin';
+  // role: 'user' | 'admin';
   createdAt: Date;
   cart: ICartItem[];  // Add cart property to IUser interface
   matchPassword: (enteredPassword: string) => Promise<boolean>;
@@ -67,11 +67,11 @@ const UserSchema = new mongoose.Schema<IUser>({
   profilePicture: {
     type: String,
   },
-  role: {
-    type: String,
-    enum: ['user', 'admin'],
-    default: 'user',
-  },
+  // role: {
+  //   type: String,
+  //   enum: ['user', 'admin'],
+  //   default: 'user',
+  // },
   createdAt: {
     type: Date,
     default: Date.now,

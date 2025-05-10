@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
 import { User, Phone, Mail, Key, Upload } from 'lucide-react';
+import axios from 'axios'
 
 const ProfilePage: React.FC = () => {
   const { user, loading } = useAuth();
@@ -12,13 +13,48 @@ const ProfilePage: React.FC = () => {
     name: user?.name || '',
     rollNumber: user?.rollNumber || '',
     email: user?.email || '',
-    mobile: '',
     currentPassword: '',
     newPassword: '',
     confirmPassword: '',
   });
   const [profileImage, setProfileImage] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string>(user?.profilePicture || '');
+
+  useEffect(() => {
+  const fetchProfile = async () => {
+    try {
+      const token = localStorage.getItem('token');  // assuming you stored the token here at login
+
+      const response = await axios.get('http://localhost:5000/api/profile', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const { name, rollNumber, email, profilePicture } = response.data;
+
+      setFormData({
+        name,
+        rollNumber,
+        email,
+        // mobile: mobile || '',
+        currentPassword: '',
+        newPassword: '',
+        confirmPassword: '',
+      });
+
+      if (profilePicture) {
+        setPreviewUrl(profilePicture);
+      }
+
+    } catch (err) {
+      console.error('Error fetching profile data:', err);
+    }
+  };
+
+  fetchProfile();
+}, []);
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -35,27 +71,70 @@ const ProfilePage: React.FC = () => {
     }
   };
 
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+    
+  //   // Simulate API call
+  //   await new Promise(resolve => setTimeout(resolve, 1000));
+    
+  //   // Update local storage
+  //   const updatedUser = {
+  //     ...user,
+  //     name: formData.name,
+  //     rollNumber: formData.rollNumber,
+  //     profilePicture: previewUrl,
+  //   };
+  //   localStorage.setItem('user', JSON.stringify(updatedUser));
+    
+  //   setSuccessMessage('Profile updated successfully!');
+  //   setTimeout(() => {
+  //     setSuccessMessage('');
+  //     setIsEditing(false);
+  //   }, 2000);
+  // };
+
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // Update local storage
-    const updatedUser = {
-      ...user,
-      name: formData.name,
-      rollNumber: formData.rollNumber,
-      profilePicture: previewUrl,
-    };
-    localStorage.setItem('user', JSON.stringify(updatedUser));
-    
+  e.preventDefault();
+
+  try {
+    const token = localStorage.getItem('token');
+    const formPayload = new FormData();
+
+    formPayload.append('name', formData.name);
+    formPayload.append('rollNumber', formData.rollNumber);
+    // formPayload.append('mobile', formData.mobile);
+
+    if (profileImage) {
+      formPayload.append('profilePicture', profileImage);
+    }
+
+    if (formData.currentPassword && formData.newPassword) {
+      formPayload.append('currentPassword', formData.currentPassword);
+      formPayload.append('newPassword', formData.newPassword);
+    }
+
+    await axios.put('http://localhost:5000/api/profile', formPayload, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
     setSuccessMessage('Profile updated successfully!');
+
     setTimeout(() => {
       setSuccessMessage('');
       setIsEditing(false);
     }, 2000);
-  };
+  } catch (err) {
+    console.error('Error updating profile:', err);
+    setSuccessMessage('Failed to update profile.');
+    setTimeout(() => {
+      setSuccessMessage('');
+    }, 2000);
+  }
+};
+
 
   if (loading) {
     return (
@@ -141,7 +220,7 @@ const ProfilePage: React.FC = () => {
                 helperText="Email cannot be changed"
               />
               
-              <Input
+              {/* <Input
                 label="Mobile Number"
                 type="tel"
                 name="mobile"
@@ -149,7 +228,7 @@ const ProfilePage: React.FC = () => {
                 onChange={handleInputChange}
                 disabled={!isEditing}
                 leftIcon={<Phone className="h-5 w-5" />}
-              />
+              /> */}
             </div>
 
             {/* Password Change Section */}

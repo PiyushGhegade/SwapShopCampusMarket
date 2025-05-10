@@ -42,7 +42,7 @@ export const register = async (req: Request, res: Response) => {
         name: user.name,
         email: user.email,
         rollNumber: user.rollNumber,
-        role: user.role,
+        // role: user.role,
         token: user.getSignedJwtToken(),
       });
     } else {
@@ -82,7 +82,7 @@ export const login = async (req: Request, res: Response) => {
       email: user.email,
       rollNumber: user.rollNumber,
       profilePicture: user.profilePicture,
-      role: user.role,
+      // role: user.role,
       token: user.getSignedJwtToken(),
     });
   } catch (error) {
@@ -104,7 +104,7 @@ export const getMe = async (req: Request, res: Response) => {
       email: user?.email,
       rollNumber: user?.rollNumber,
       profilePicture: user?.profilePicture,
-      role: user?.role,
+      // role: user?.role,
       createdAt: user?.createdAt,
     });
   } catch (error) {
@@ -144,7 +144,7 @@ export const updateProfile = async (req: Request, res: Response) => {
       email: updatedUser.email,
       rollNumber: updatedUser.rollNumber,
       profilePicture: updatedUser.profilePicture,
-      role: updatedUser.role,
+      // role: updatedUser.role,
     });
   } catch (error) {
     console.error('Update profile error:', error);
