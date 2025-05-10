@@ -57,7 +57,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ className = '', onSearch }) => {
       </form>
 
       {showSuggestions && (
-        <div className="absolute w-full mt-2 bg-white rounded-lg shadow-lg z-50">
+        <div className="absolute w-full mt-2 bg-black rounded-lg shadow-lg z-50">
           <div className="p-2">
             <div className="text-sm font-medium text-gray-500 mb-2">Categories</div>
             {categories.map((category) => (

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Search } from 'lucide-react';
 import Button from '../ui/Button';
 import SearchBar from './SearchBar';
+import '../../styles/select-options.css';
 
 const HeroSection: React.FC = () => {
   return (
@@ -36,7 +37,7 @@ const HeroSection: React.FC = () => {
                   <SearchBar />
                 </div>
                 <div className="col-span-2 sm:col-span-1">
-                  <select className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
+                  <select className="w-full p-3 rounded-lg border text-gray-500 border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
                     <option value="">All Categories</option>
                     <option value="Books">Books</option>
                     <option value="Electronics">Electronics</option>
@@ -45,7 +46,7 @@ const HeroSection: React.FC = () => {
                   </select>
                 </div>
                 <div className="col-span-2 sm:col-span-1">
-                  <select className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
+                  <select className="w-full p-3 rounded-lg border text-gray-500 border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
                     <option value="">Price Range</option>
                     <option value="0-500">₹0 - ₹500</option>
                     <option value="500-2000">₹500 - ₹2000</option>
