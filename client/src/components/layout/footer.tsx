@@ -70,17 +70,17 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-500 hover:text-primary">
+                <a href="/safetyTips" className="text-gray-500 hover:text-primary">
                   Safety Tips
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-500 hover:text-primary">
+                <a href="/termsOfService" className="text-gray-500 hover:text-primary">
                   Terms of Service
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-500 hover:text-primary">
+                <a href="/privacyPolicy" className="text-gray-500 hover:text-primary">
                   Privacy Policy
                 </a>
               </li>
