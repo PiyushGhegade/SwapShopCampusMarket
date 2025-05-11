@@ -9,6 +9,10 @@ import ListingPage from "@/pages/listing-page";
 import CreateListingPage from "@/pages/create-listing-page";
 import ProfilePage from "@/pages/profile-page";
 import MessagesPage from "@/pages/messages-page";
+import HelpCenterPage from "@/pages/help-center-page";
+// import SafetyTipsPage from "@/pages/safety-tips-page";
+// import TermsAndServicePage from "@/pages/terms-and-service-page";
+// import PrivacyPolicyPage from "@/pages/privacy-policy-page";
 import { AuthProvider } from "./hooks/use-auth";
 import { ProtectedRoute } from "./lib/protected-route";
 import Layout from "./components/layout/layout";
@@ -23,6 +27,10 @@ function Router() {
         <ProtectedRoute path="/create-listing" component={CreateListingPage} />
         <ProtectedRoute path="/profile" component={ProfilePage} />
         <ProtectedRoute path="/messages" component={MessagesPage} />
+        <Route path="/helpCenter" component={HelpCenterPage} />
+        {/* <Route path="/safetyTips" component={SafetyTipsPage} />
+        <Route path="/TermsAndService" component={TermsAndServicePage} />
+        <Route path="/privacyPolicy" component={PrivacyPolicyPage} /> */}
         <Route component={NotFound} />
       </Switch>
     </Layout>

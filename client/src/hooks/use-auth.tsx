@@ -13,7 +13,7 @@ import { z } from "zod";
 // Extended schema for registration validation
 export const userFormSchema = insertUserSchema.extend({
   password: z.string().min(6, "Password must be at least 6 characters"),
-  email: z.string().email("Please enter a valid email address").endsWith(".edu", "Only .edu email addresses are allowed"),
+  email: z.string().email("Please enter a valid email address").endsWith("@iitp.ac.in", "Only .edu email addresses are allowed"),
   username: z.string().min(3, "Username must be at least 3 characters")
 });
 
@@ -73,7 +73,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       queryClient.setQueryData(["/api/user"], user);
       toast({
         title: "Registration successful",
-        description: `Welcome to Campus Marketplace, ${user.username}!`,
+        description: `Welcome to SWAP SHOP , ${user.username}!`,
       });
     },
     onError: (error: Error) => {

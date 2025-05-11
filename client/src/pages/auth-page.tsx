@@ -72,10 +72,11 @@ export default function AuthPage() {
         <div className="max-w-md w-full">
           <div className="text-center mb-8">
             <div className="flex items-center justify-center">
-              <i className="ri-store-2-fill text-primary text-3xl mr-2"></i>
-              <h1 className="text-2xl font-bold text-primary">CampusMarket</h1>
+              {/* <i className="ri-store-2-fill text-primary text-3xl mr-2"></i> */}
+              <i className="ri-shopping-cart-line  text-primary text-3xl mr-2"></i>
+              <h1 className="text-2xl font-bold text-primary">SWAP SHOP</h1>
             </div>
-            <p className="text-gray-500 mt-2">Buy and sell items within your campus community</p>
+            <p className="text-gray-500 mt-2">Buy and sell items within your IIT Patna community</p>
           </div>
           
           <Tabs defaultValue="signin" value={activeTab} onValueChange={(value) => setActiveTab(value as "signin" | "signup")}>
@@ -94,7 +95,7 @@ export default function AuthPage() {
                       <FormItem>
                         <FormLabel>College Email</FormLabel>
                         <FormControl>
-                          <Input placeholder="your.name@college.edu" {...field} />
+                          <Input placeholder="your.name_your.rollno.@iitp.ac.in" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -178,7 +179,7 @@ export default function AuthPage() {
                       <FormItem>
                         <FormLabel>College Email</FormLabel>
                         <FormControl>
-                          <Input placeholder="your.name@college.edu" {...field} />
+                          <Input placeholder="your.name_your_rollno.@iitp.ac.in" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -220,7 +221,7 @@ export default function AuthPage() {
                       <FormItem>
                         <FormLabel>Campus Location (Optional)</FormLabel>
                         <FormControl>
-                          <Input placeholder="e.g. North Dorms, West Campus" {...field} />
+                          <Input placeholder="e.g. Aryabhatta , A406" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -244,7 +245,7 @@ export default function AuthPage() {
           </Tabs>
           
           <div className="mt-6 text-center text-sm text-gray-500">
-            <p>Only students with verified .edu emails can join.</p>
+            <p>Only students with verified @iitp.ac.in emails can join.</p>
           </div>
         </div>
       </div>

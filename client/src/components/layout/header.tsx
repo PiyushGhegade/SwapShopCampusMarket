@@ -12,6 +12,23 @@ import { Input } from "@/components/ui/input";
 import { useQuery } from "@tanstack/react-query";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
+
+/// ICON LOGO PART
+// images.d.ts or declarations.d.ts
+// declare module '*.png' {
+//   const value: import('next/image').StaticImageData;
+//   export default value;
+// }
+
+
+
+// import Image from 'next/image';
+// import SWAP_SHOP_logo from './SWAP_SHOP_logo.png'; // ✅ no JSX here, just a regular import
+// import Link from 'next/link';
+
+
+// TILL HERE
+
 export default function Header() {
   const [searchQuery, setSearchQuery] = useState("");
   const [showMobileSearch, setShowMobileSearch] = useState(false);
@@ -55,8 +72,13 @@ export default function Header() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <i className="ri-store-2-fill text-primary text-2xl mr-2"></i>
-              <span className="text-xl font-bold text-primary">CampusMarket</span>
+              {/* <i className="ri-store-2-fill text-primary text-2xl mr-2"></i> */}
+              
+              <i className="ri-shopping-cart-line text-primary text-2xl mr-2"></i>
+
+              {/* Logo part */}
+
+              <span className="text-xl font-bold text-primary">SWAP SHOP</span>
             </Link>
           </div>
 

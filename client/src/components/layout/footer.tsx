@@ -6,9 +6,9 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="font-bold text-lg mb-4">CampusMarket</h3>
+            <h3 className="font-bold text-lg mb-4">SWAP SHOP</h3>
             <p className="text-gray-500 text-sm">
-              The trusted marketplace for college students to buy and sell items within their campus community.
+            The trusted marketplace for IIT Patna students to buy, sell, and share items within their campus community — making college life smarter, greener, and more affordable!
             </p>
           </div>
           <div>
@@ -65,7 +65,7 @@ export default function Footer() {
             <h4 className="font-medium mb-3">Support</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="text-gray-500 hover:text-primary">
+                <a href="/helpCenter" className="text-gray-500 hover:text-primary">
                   Help Center
                 </a>
               </li>
@@ -89,7 +89,7 @@ export default function Footer() {
         </div>
         <div className="border-t border-gray-200 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-gray-500">
-            &copy; {new Date().getFullYear()} CampusMarket. All rights reserved.
+            &copy; {new Date().getFullYear()} SWAP SHOP. All rights reserved.
           </p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             <a href="#" className="text-gray-500 hover:text-primary">
